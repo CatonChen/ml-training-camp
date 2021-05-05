@@ -2185,6 +2185,9 @@ static int __Pyx_ValidateAndInit_memviewslice(
 static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_ds_double(PyObject *, int writable_flag);
 
 /* ObjectToMemviewSlice.proto */
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_ds_float(PyObject *, int writable_flag);
+
+/* ObjectToMemviewSlice.proto */
 static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_ds_int(PyObject *, int writable_flag);
 
 /* CheckBinaryVersion.proto */
@@ -2292,6 +2295,7 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
+static __Pyx_TypeInfo __Pyx_TypeInfo_float = { "float", NULL, sizeof(float), { 0 }, 0, 'R', 0, 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_int = { "int", NULL, sizeof(int), { 0 }, 0, IS_UNSIGNED(int) ? 'U' : 'I', IS_UNSIGNED(int), 0 };
 #define __Pyx_MODULE_NAME "tm"
 extern int __pyx_module_is_main_tm;
@@ -2357,6 +2361,7 @@ static const char __pyx_k_unpack[] = "unpack";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_x_name[] = "x_name";
 static const char __pyx_k_y_name[] = "y_name";
+static const char __pyx_k_float32[] = "float32";
 static const char __pyx_k_float64[] = "float64";
 static const char __pyx_k_fortran[] = "fortran";
 static const char __pyx_k_memview[] = "memview";
@@ -2461,6 +2466,7 @@ static PyObject *__pyx_n_s_enumerate;
 static PyObject *__pyx_n_s_error;
 static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_flags;
+static PyObject *__pyx_n_s_float32;
 static PyObject *__pyx_n_s_float64;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_fortran;
@@ -4027,7 +4033,7 @@ static void __pyx_f_2tm_target_mean_v3_impl(__Pyx_memviewslice __pyx_v_result, _
  * 
  * cpdef target_mean_v4(data, y_name, x_name):             # <<<<<<<<<<<<<<
  *     cdef long nrow = data.shape[0]
- *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
+ *     cdef np.ndarray[float] result = np.asfortranarray(np.zeros(nrow), dtype=np.float32)
  */
 
 static PyObject *__pyx_pw_2tm_7target_mean_v4(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
@@ -4077,7 +4083,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
  * 
  * cpdef target_mean_v4(data, y_name, x_name):
  *     cdef long nrow = data.shape[0]             # <<<<<<<<<<<<<<
- *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
+ *     cdef np.ndarray[float] result = np.asfortranarray(np.zeros(nrow), dtype=np.float32)
  *     cdef np.ndarray[int] y = np.asfortranarray(data[y_name], dtype=np.int32)
  */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_data, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
@@ -4092,7 +4098,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
   /* "tm.pyx":51
  * cpdef target_mean_v4(data, y_name, x_name):
  *     cdef long nrow = data.shape[0]
- *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray[float] result = np.asfortranarray(np.zeros(nrow), dtype=np.float32)             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[int] y = np.asfortranarray(data[y_name], dtype=np.int32)
  *     cdef np.ndarray[int] x = np.asfortranarray(data[x_name], dtype=np.int32)
  */
@@ -4133,7 +4139,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_float32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
@@ -4147,7 +4153,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
   __pyx_t_7 = ((PyArrayObject *)__pyx_t_6);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_result.rcbuffer->pybuffer, (PyObject*)__pyx_t_7, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_result.rcbuffer->pybuffer, (PyObject*)__pyx_t_7, &__Pyx_TypeInfo_float, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_result = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_result.rcbuffer->pybuffer.buf = NULL;
       __PYX_ERR(0, 51, __pyx_L1_error)
     } else {__pyx_pybuffernd_result.diminfo[0].strides = __pyx_pybuffernd_result.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_result.diminfo[0].shape = __pyx_pybuffernd_result.rcbuffer->pybuffer.shape[0];
@@ -4159,7 +4165,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
 
   /* "tm.pyx":52
  *     cdef long nrow = data.shape[0]
- *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
+ *     cdef np.ndarray[float] result = np.asfortranarray(np.zeros(nrow), dtype=np.float32)
  *     cdef np.ndarray[int] y = np.asfortranarray(data[y_name], dtype=np.int32)             # <<<<<<<<<<<<<<
  *     cdef np.ndarray[int] x = np.asfortranarray(data[x_name], dtype=np.int32)
  *     target_mean_v4_impl(result , y, x , nrow)
@@ -4205,7 +4211,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
   __pyx_t_4 = 0;
 
   /* "tm.pyx":53
- *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
+ *     cdef np.ndarray[float] result = np.asfortranarray(np.zeros(nrow), dtype=np.float32)
  *     cdef np.ndarray[int] y = np.asfortranarray(data[y_name], dtype=np.int32)
  *     cdef np.ndarray[int] x = np.asfortranarray(data[x_name], dtype=np.int32)             # <<<<<<<<<<<<<<
  *     target_mean_v4_impl(result , y, x , nrow)
@@ -4258,7 +4264,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
  *     return result
  * 
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(((PyObject *)__pyx_v_result), PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_ds_float(((PyObject *)__pyx_v_result), PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 54, __pyx_L1_error)
   __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_ds_int(((PyObject *)__pyx_v_y), PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 54, __pyx_L1_error)
   __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_ds_int(((PyObject *)__pyx_v_x), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(0, 54, __pyx_L1_error)
   __pyx_f_2tm_target_mean_v4_impl(__pyx_t_10, __pyx_t_11, __pyx_t_12, __pyx_v_nrow);
@@ -4277,7 +4283,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
  *     target_mean_v4_impl(result , y, x , nrow)
  *     return result             # <<<<<<<<<<<<<<
  * 
- * cdef void target_mean_v4_impl(double[:] result , int[:] y , int[:] x , const long nrow):
+ * cdef void target_mean_v4_impl(float[:] result , int[:] y , int[:] x , const long nrow):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(((PyObject *)__pyx_v_result));
@@ -4289,7 +4295,7 @@ static PyObject *__pyx_f_2tm_target_mean_v4(PyObject *__pyx_v_data, PyObject *__
  * 
  * cpdef target_mean_v4(data, y_name, x_name):             # <<<<<<<<<<<<<<
  *     cdef long nrow = data.shape[0]
- *     cdef np.ndarray[double] result = np.asfortranarray(np.zeros(nrow), dtype=np.float64)
+ *     cdef np.ndarray[float] result = np.asfortranarray(np.zeros(nrow), dtype=np.float32)
  */
 
   /* function exit code */
@@ -4430,7 +4436,7 @@ static PyObject *__pyx_pf_2tm_6target_mean_v4(CYTHON_UNUSED PyObject *__pyx_self
 /* "tm.pyx":57
  *     return result
  * 
- * cdef void target_mean_v4_impl(double[:] result , int[:] y , int[:] x , const long nrow):             # <<<<<<<<<<<<<<
+ * cdef void target_mean_v4_impl(float[:] result , int[:] y , int[:] x , const long nrow):             # <<<<<<<<<<<<<<
  *     cdef dict value_dict = dict()
  *     cdef dict count_dict = dict()
  */
@@ -4451,7 +4457,7 @@ static void __pyx_f_2tm_target_mean_v4_impl(__Pyx_memviewslice __pyx_v_result, _
   int __pyx_t_9;
   PyObject *__pyx_t_10 = NULL;
   PyObject *__pyx_t_11 = NULL;
-  double __pyx_t_12;
+  float __pyx_t_12;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4459,7 +4465,7 @@ static void __pyx_f_2tm_target_mean_v4_impl(__Pyx_memviewslice __pyx_v_result, _
 
   /* "tm.pyx":58
  * 
- * cdef void target_mean_v4_impl(double[:] result , int[:] y , int[:] x , const long nrow):
+ * cdef void target_mean_v4_impl(float[:] result , int[:] y , int[:] x , const long nrow):
  *     cdef dict value_dict = dict()             # <<<<<<<<<<<<<<
  *     cdef dict count_dict = dict()
  * 
@@ -4470,7 +4476,7 @@ static void __pyx_f_2tm_target_mean_v4_impl(__Pyx_memviewslice __pyx_v_result, _
   __pyx_t_1 = 0;
 
   /* "tm.pyx":59
- * cdef void target_mean_v4_impl(double[:] result , int[:] y , int[:] x , const long nrow):
+ * cdef void target_mean_v4_impl(float[:] result , int[:] y , int[:] x , const long nrow):
  *     cdef dict value_dict = dict()
  *     cdef dict count_dict = dict()             # <<<<<<<<<<<<<<
  * 
@@ -4729,7 +4735,7 @@ static void __pyx_f_2tm_target_mean_v4_impl(__Pyx_memviewslice __pyx_v_result, _
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_10); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 70, __pyx_L1_error)
+    __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_10); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 70, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_t_5 = __pyx_v_i;
     __pyx_t_6 = -1;
@@ -4741,13 +4747,13 @@ static void __pyx_f_2tm_target_mean_v4_impl(__Pyx_memviewslice __pyx_v_result, _
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
       __PYX_ERR(0, 70, __pyx_L1_error)
     }
-    *((double *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_5 * __pyx_v_result.strides[0]) )) = __pyx_t_12;
+    *((float *) ( /* dim=0 */ (__pyx_v_result.data + __pyx_t_5 * __pyx_v_result.strides[0]) )) = __pyx_t_12;
   }
 
   /* "tm.pyx":57
  *     return result
  * 
- * cdef void target_mean_v4_impl(double[:] result , int[:] y , int[:] x , const long nrow):             # <<<<<<<<<<<<<<
+ * cdef void target_mean_v4_impl(float[:] result , int[:] y , int[:] x , const long nrow):             # <<<<<<<<<<<<<<
  *     cdef dict value_dict = dict()
  *     cdef dict count_dict = dict()
  */
@@ -19608,6 +19614,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_error, __pyx_k_error, sizeof(__pyx_k_error), 0, 0, 1, 1},
   {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
   {&__pyx_n_s_flags, __pyx_k_flags, sizeof(__pyx_k_flags), 0, 0, 1, 1},
+  {&__pyx_n_s_float32, __pyx_k_float32, sizeof(__pyx_k_float32), 0, 0, 1, 1},
   {&__pyx_n_s_float64, __pyx_k_float64, sizeof(__pyx_k_float64), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_s_fortran, __pyx_k_fortran, sizeof(__pyx_k_fortran), 0, 0, 1, 1},
@@ -25120,6 +25127,29 @@ no_fail:
     retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, 0,
                                                  PyBUF_RECORDS_RO | writable_flag, 1,
                                                  &__Pyx_TypeInfo_double, stack,
+                                                 &result, obj);
+    if (unlikely(retcode == -1))
+        goto __pyx_fail;
+    return result;
+__pyx_fail:
+    result.memview = NULL;
+    result.data = NULL;
+    return result;
+}
+
+/* ObjectToMemviewSlice */
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_ds_float(PyObject *obj, int writable_flag) {
+    __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
+    __Pyx_BufFmt_StackElem stack[1];
+    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_STRIDED) };
+    int retcode;
+    if (obj == Py_None) {
+        result.memview = (struct __pyx_memoryview_obj *) Py_None;
+        return result;
+    }
+    retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, 0,
+                                                 PyBUF_RECORDS_RO | writable_flag, 1,
+                                                 &__Pyx_TypeInfo_float, stack,
                                                  &result, obj);
     if (unlikely(retcode == -1))
         goto __pyx_fail;
